@@ -58,10 +58,10 @@ var posts = [
 var normalizeData = function (unnormalizedData) {
     var result = unnormalizedData.reduce(function (acc, cur) {
         var _a;
-        return __assign(__assign({}, acc), { byId: (_a = {},
-                _a[cur.id] = cur,
-                _a), allIds: __spreadArray(__spreadArray([], (acc.allIds || []), true), [cur.id], false) });
+        return __assign(__assign({}, acc), { byId: __assign(__assign({}, acc.byId), (_a = {}, _a[cur.id] = cur, _a)), allIds: __spreadArray(__spreadArray([], (acc.allIds || []), true), [cur.id], false) });
+        //@ts-ignore
     }, {});
+    //@ts-ignore
     return result;
 };
 console.log(normalizeData(posts));

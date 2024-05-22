@@ -4,11 +4,14 @@ interface Post {
 	body: string
 }
 
-interface NormalizedPost {
-	byId: {
-		[key: string]: Post
-	}
+interface NormalizedPost<T> {
+	byId: Record<string, T>
 	allIds: string[]
+}
+
+const emptyNormalizedPost = {
+	byId: {},
+	allIds: [],
 }
 
 const posts = [
@@ -49,16 +52,20 @@ const posts = [
 	},
 ]
 
-const normalizeData = (unnormalizedData: Array<Post>): NormalizedPost => {
-	const result = unnormalizedData.reduce<NormalizedPost>((acc, cur) => {
+const normalizeData = <T extends Post>(
+	unnormalizedData: T[]
+): NormalizedPost<T> => {
+	const result = unnormalizedData.reduce<NormalizedPost<T>>((acc, cur) => {
 		return {
 			...acc,
 			byId: {
+				...acc.byId,
 				[cur.id]: cur,
 			},
 			allIds: [...(acc.allIds || []), cur.id],
 		}
-	}, {} as NormalizedPost)
+	}, emptyNormalizedPost)
+
 	return result
 }
 
