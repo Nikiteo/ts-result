@@ -1,0 +1,32 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <link rel="icon" type="image/svg+xml" href="/vite.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Weather Sound Player</title>
+</head>
+
+<body>
+  <div id="background" class="background"></div>
+  <div class="container">
+    <div class="header">
+      Weather sounds
+    </div>
+    <div class="controls">
+      <div class="soundsControlWrapper">
+        <button id="playSummer" data-sound-key="summer"></button>
+        <button id="playRain" data-sound-key="rain"></button>
+        <button id="playWinter" data-sound-key="winter"></button>
+      </div>
+      <div class="volumeControlWrapper">
+        <label for="volume" class="volume-label">Volume Control</label>
+        <input type="range" id="volume" min="0" max="1" step="0.01" value="0.5" />
+      </div>
+    </div>
+  </div>
+  <script type="module" src="/src/main.ts"></script>
+</body>
+
+</html>
