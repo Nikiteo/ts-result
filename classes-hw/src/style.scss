@@ -1,0 +1,109 @@
+body {
+	margin: 0;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+}
+
+.background {
+	position: fixed;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	background-size: cover;
+	background-position: center;
+	z-index: -1;
+	filter: blur(3px);
+}
+
+.container {
+	height: 100%;
+	padding: 20px 0;
+	.header {
+		font-size: 72px;
+		font-weight: bold;
+		color: #ff5733;
+		white-space: nowrap;
+		text-align: center;
+		margin-bottom: 20px;
+	}
+	.controls {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 10px;
+
+		.volumeControlWrapper {
+			.volume-label {
+				position: absolute;
+				width: 1px;
+				height: 1px;
+				margin: -1px;
+				padding: 0;
+				overflow: hidden;
+				clip: rect(0, 0, 0, 0);
+			}
+
+			#volume {
+				width: 200px;
+			}
+		}
+
+		.soundsControlWrapper {
+			display: flex;
+			margin-bottom: 20px;
+			gap: 12px;
+			button {
+				cursor: pointer;
+				width: 160px;
+				height: 160px;
+				border-radius: 20px;
+				border: none;
+				outline: none;
+				background-size: cover;
+				background-position: center;
+				position: relative;
+				overflow: hidden;
+				&::after {
+					content: '';
+					position: absolute;
+					top: 50%;
+					left: 50%;
+					transform: translate(-50%, -50%);
+					width: 30%;
+					height: 30%;
+					background-repeat: no-repeat;
+					background-size: contain;
+					background-position: center;
+				}
+			}
+
+			#playSummer {
+				background-image: url('./assets/images/summer-bg.jpg');
+
+				&::after {
+					background-image: url('./assets/icons/sun.svg');
+				}
+			}
+
+			#playWinter {
+				background-image: url('./assets/images/winter-bg.jpg');
+
+				&::after {
+					background-image: url('./assets/icons/cloud-snow.svg');
+				}
+			}
+
+			#playRain {
+				background-image: url('./assets/images/rainy-bg.jpg');
+
+				&::after {
+					background-image: url('./assets/icons/cloud-rain.svg');
+				}
+			}
+		}
+	}
+}
